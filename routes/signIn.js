@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 
         const pass = await passwordChecker(user.password, checkMail.user.password);
         if(pass){
-            res.json({status: 'success', token: checkMail.user.id});
+            res.json({status: 'success', token: checkMail.user.id, type: checkMail.user.type});
             return;
         }
         res.status(401).json({status: 'fail', message: "Invalid email or password"});
@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
     }
     const pass = await passwordChecker(user.password, checkUsername.user.password);
     if(pass){
-        res.json({status: 'success', token: checkUsername.user.id});
+        res.json({status: 'success', token: checkUsername.user.id, type: checkUsername.user.type});
         return;
     }
     res.status(401).json({status: 'fail', message: "Invalid username or password"});
