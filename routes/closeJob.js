@@ -27,7 +27,6 @@ router.post('/', async (req, res) => {
     }
 
     const status = await closeJob(data.jobId);
-    console.log(status);
     res.json(status);
 })
 
