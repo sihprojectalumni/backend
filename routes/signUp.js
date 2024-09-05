@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post('/', async (req, res) => { // Changed the path to '/' since it's already defined in index.js
     const user = req.body;
-    if(!user.name || !user.email || !user.username || !user.password) {
+    if(!user.name || !user.email || !user.username || !user.password || !user.type || !user.course || !user.year) {
         res.status(400).json({status: 'fail', message: 'All fields are required'});
         return;
     }
