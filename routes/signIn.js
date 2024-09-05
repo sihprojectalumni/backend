@@ -8,6 +8,11 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     const user = req.body;
+    if (!user.info || !user.password){
+        res.status(400).json({status: 'fail', message: 'Missing credentials'});
+        return;
+    }
+    
     if(user.info.includes('@')){
         const checkMail = await getUserByMail(user.info);
         if (checkMail.status === 'error'){
